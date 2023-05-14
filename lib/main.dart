@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'TokoKu',
       debugShowCheckedModeBanner: false, //menghilangkan banner "debug"
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: SplashScreen(),
+      home: const SplashScreen(),
       routes: {
-        '/login': (context) => LoginScreen(),
-        '/home': (context) => HomeScreen()
+        '/login': (context) => const Login(),
+        '/home': (context) => const HomeScreen()
       },
     );
   }

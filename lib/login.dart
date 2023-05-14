@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:proyek_akhir_flutter/home.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: LoginScreen(),
-    );
-  }
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class LoginScreen extends StatelessWidget {
-  String _name = '';
-  bool _isObscured = true;
+class _LoginScreenState extends State<Login> {
+  final bool _isObscured = true;
+  final String _email = 'user@gmail.com';
+  final String _password = '12345678';
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false, //menghilangkan tombol kembali
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: SafeArea(
         child: Column(
@@ -54,13 +50,13 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _emailController,
                       decoration: const InputDecoration(
                           hintText: 'Write your email...',
                           labelText: 'Your Email',
                           border: OutlineInputBorder()),
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(fontSize: 12),
-                      onChanged: (String value) {},
                     )
                   ],
                 )),
@@ -70,6 +66,7 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _passwordController,
                       decoration: const InputDecoration(
                           hintText: 'Write your password...',
                           labelText: 'Your Password',
@@ -77,26 +74,43 @@ class LoginScreen extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       obscureText: _isObscured,
                       style: const TextStyle(fontSize: 12),
-                      onChanged: (String value) {},
                     )
                   ],
                 )),
             const SizedBox(height: 30),
-            Container(
-              child: Column(
-                children: [
-                  FilledButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const HomeScreen();
-                      }));
-                    },
-                    child: const Text('Submit'),
-                    style: FilledButton.styleFrom(minimumSize: Size(200, 50)),
-                  )
-                ],
-              ),
+            Column(
+              children: [
+                FilledButton(
+                  onPressed: () {
+                    if (_emailController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Silahkan masukkan Email')));
+                      return;
+                    }
+
+                    if (_passwordController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Silahkan masukkan Kata Sandi')));
+                      return;
+                    }
+
+                    if (_emailController.text != _email ||
+                        _passwordController.text != _password) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text('Email atau kata sandi salah')));
+                      return;
+                    }
+
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const HomeScreen();
+                    }));
+                  },
+                  style:
+                      FilledButton.styleFrom(minimumSize: const Size(200, 50)),
+                  child: const Text('Submit'),
+                )
+              ],
             )
           ],
         ),

@@ -2,7 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
@@ -15,14 +18,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToHome() {
     Timer(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => Navigator.of(context).pushReplacementNamed('/login'),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(child: Text('TokoKu')),
     );
