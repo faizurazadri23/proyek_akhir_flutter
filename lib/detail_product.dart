@@ -19,7 +19,7 @@ class DetailProductScreen extends StatelessWidget {
           children: <Widget>[
             Image.asset(product.imageProduct),
             Container(
-              margin: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10),
               child: Text(
                 product.productName,
                 textAlign: TextAlign.center,
@@ -27,19 +27,16 @@ class DetailProductScreen extends StatelessWidget {
                     fontSize: 18.0, fontWeight: FontWeight.bold),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 10.0),
-              child: Text(
-                product.priceProduct,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold),
-              ),
+            Text(
+              product.priceProduct,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  color: Colors.red,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold),
             ),
             Container(
-              margin: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(10),
               child: const Text(
                 'Description',
                 textAlign: TextAlign.start,
@@ -47,7 +44,7 @@ class DetailProductScreen extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+              margin: const EdgeInsets.only(left: 10.0, right: 10.0),
               child: Text(
                 product.description,
                 textAlign: TextAlign.justify,

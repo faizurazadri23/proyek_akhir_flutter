@@ -55,7 +55,6 @@ class HomeScreen extends StatelessWidget {
               ),
             );
           },
-          scrollDirection: Axis.vertical,
           itemCount: productList.length,
         ));
   }

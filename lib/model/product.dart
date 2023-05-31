@@ -4,11 +4,12 @@ class Product {
   String description;
   String priceProduct;
 
-  Product(
-      {required this.productName,
-      required this.imageProduct,
-      required this.description,
-      required this.priceProduct});
+  Product({
+    required this.productName,
+    required this.imageProduct,
+    required this.description,
+    required this.priceProduct,
+  });
 }
 
 var productList = [
